@@ -1,9 +1,10 @@
-export default class AlertService {
+import { inputsAreValid } from "./utils/inputs-are-valid";
+export class AlertService {
   constructor() {
     this.errorBox = document.getElementById("error");
   }
 
-  handleAdditionError = (inputs, numbers) => {
+  handleAdditionError(inputs, numbers) {
     const fullMessage = inputs.reduce((message, str, index) => {
       if (inputsAreValid(numbers[index])) {
         return message + "";
@@ -12,11 +13,11 @@ export default class AlertService {
       }
     }, "Please enter two valid numbers! ");
 
-    errorBox.classList.remove("invisible");
-    errorBox.innerText = fullMessage;
-  };
+    this.errorBox.classList.remove("invisible");
+    this.errorBox.innerText = fullMessage;
+  }
 
-  hideErrors = () => {
-    errorBox.classList.add("invisible");
-  };
+  hideErrors() {
+    this.errorBox.classList.add("invisible");
+  }
 }
