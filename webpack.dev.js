@@ -4,9 +4,12 @@ const merge = require("webpack-merge");
 
 module.exports = merge(common, {
   mode: "development",
-  entry: "./src/index.js",
+  entry: { 
+    main: "./src/index.js",
+    vendor: "./src/vendor.js"
+  },
   output: {
-    filename: "main.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
   }
 });
